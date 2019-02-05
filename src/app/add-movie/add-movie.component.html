@@ -1,0 +1,63 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+      Add New Movie
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Add Movie</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" formControlName="Title" (ngModel)="newMovie" [ngClass]="{ 'is-invalid': submitted && f.Title.errors }" placeholder="Title" name="Title" class="form-control" id="title" required>
+            <div *ngIf="submitted && f.Title.errors" class="invalid-feedback">
+                <div *ngIf="f.Title.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input formControlName="Year" (ngModel)="newYear" [ngClass]="{ 'is-invalid': submitted && f.Title.errors }"placeholder="Year" name="Year" class="form-control" id="year" required>
+            <div *ngIf="submitted && f.Year.errors" class="invalid-feedback">
+                <div *ngIf="f.Year.errors.required">Year is required</div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <label for="director">Director:</label>
+            <input formControlName="Director" (ngModel)="newDirector" [ngClass]="{ 'is-invalid': submitted && f.Director.errors }" placeholder="Director" name="Director" class="form-control" id="director" required>
+            <div *ngIf="submitted && f.Director.errors" class="invalid-feedback">
+                <div *ngIf="f.Director.errors.required">Director is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre:</label>
+            <input formControlName="Genre" (ngModel)="newGenre" [ngClass]="{ 'is-invalid': submitted && f.Genre.errors }" placeholder="Genre" name="Genre" class="form-control" id="genre" required>
+            <div *ngIf="submitted && f.Genre.errors" class="invalid-feedback">
+                <div *ngIf="f.Genre.errors.required">Genre is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="runtime">Runtime:</label>
+            <input formControlName="Runtime" (ngModel)="newRuntime" [ngClass]="{ 'is-invalid': submitted && f.Runtime.errors }" placeholder="Runtime" name="Runtime" class="form-control" id="runtime" required>
+            <div *ngIf="submitted && f.Runtime.errors" class="invalid-feedback">
+                <div *ngIf="f.Runtime.errors.required">Runtime is required</div>
+            </div>
+          </div>
+        
+          <button class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+      <!--<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>-->
+    </div>
+  </div>
+</div>
